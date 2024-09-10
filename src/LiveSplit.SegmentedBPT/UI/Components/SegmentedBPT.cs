@@ -125,6 +125,7 @@ namespace LiveSplit.UI.Components
                     ? selectedSegment.Alias
                     : state.Run[selectedSegment.Index].Name;
             }
+
             var titles = _generateTexts(splitName, isLast);
 
             InternalComponent.InformationName = InternalComponent.LongestString = titles[0];

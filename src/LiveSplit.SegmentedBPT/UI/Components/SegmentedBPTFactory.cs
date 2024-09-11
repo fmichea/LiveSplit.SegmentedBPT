@@ -22,6 +22,6 @@ namespace LiveSplit.UI.Components
 
         public string UpdateURL => "https://raw.githubusercontent.com/fmichea/LiveSplit.SegmentedBPT/main/";
 
-        public Version Version => Version.Parse("0.0.1");
+        public Version Version => Version.Parse("0.0.2");
     }
 }

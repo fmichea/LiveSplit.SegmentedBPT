@@ -498,6 +498,7 @@ namespace LiveSplit.UI.Components
             this.btnTextColor.Size = new System.Drawing.Size(23, 23);
             this.btnTextColor.TabIndex = 1;
             this.btnTextColor.UseVisualStyleBackColor = false;
+            this.btnTextColor.Click += new System.EventHandler(this.ColorButtonClick);
             // 
             // chkOverrideTextColor
             // 
@@ -650,6 +651,7 @@ namespace LiveSplit.UI.Components
             this.btnTimeColor.Size = new System.Drawing.Size(23, 23);
             this.btnTimeColor.TabIndex = 1;
             this.btnTimeColor.UseVisualStyleBackColor = false;
+            this.btnTimeColor.Click += new System.EventHandler(this.ColorButtonClick);
             // 
             // chkOverrideTimeColor
             // 
@@ -706,6 +708,7 @@ namespace LiveSplit.UI.Components
             this.btnColor1.Size = new System.Drawing.Size(23, 23);
             this.btnColor1.TabIndex = 0;
             this.btnColor1.UseVisualStyleBackColor = false;
+            this.btnColor1.Click += new System.EventHandler(this.ColorButtonClick);
             // 
             // btnColor2
             // 
@@ -718,6 +721,7 @@ namespace LiveSplit.UI.Components
             this.btnColor2.Size = new System.Drawing.Size(23, 23);
             this.btnColor2.TabIndex = 1;
             this.btnColor2.UseVisualStyleBackColor = false;
+            this.btnColor2.Click += new System.EventHandler(this.ColorButtonClick);
             // 
             // chkTwoRows
             // 

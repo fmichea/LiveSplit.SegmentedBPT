@@ -18,7 +18,7 @@ namespace LiveSplit.UI.Components
 
         public string UpdateName => ComponentName;
 
-        public string XMLURL => "update.LiveSplit.SegmentedBPT.xml";
+        public string XMLURL => "https://raw.githubusercontent.com/fmichea/LiveSplit.SegmentedBPT/main/update.LiveSplit.SegmentedBPT.xml";
 
         public string UpdateURL => "https://raw.githubusercontent.com/fmichea/LiveSplit.SegmentedBPT/main/";
 

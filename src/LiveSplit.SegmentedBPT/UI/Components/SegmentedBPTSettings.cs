@@ -271,7 +271,7 @@ namespace LiveSplit.UI.Components
             control.MovedDown += SplitsSettingsControl_MovedDown;
             control.MovedUp += SplitsSettingsControl_MovedUp;
             control.Removed += SplitsSettingsControl_Removed;
-            //control.SizeChanged += SplitsSettingsControl_SizeChanged;
+            control.SizeChanged += SplitsSettingsControl_SizeChanged;
 
             // Add to the splits settings list.
             SplitsSettingsList.Add(control);
@@ -301,6 +301,11 @@ namespace LiveSplit.UI.Components
 
         private void SplitsSettingsControl_SizeChanged(object sender, EventArgs e)
         {
+            var senderO = (SplitsSettings)sender;
+
+            if (!VisibleSplitsSettingsList.Contains(senderO))
+                return;
+
             HandleSizeChange();
         }
 
@@ -466,7 +471,7 @@ namespace LiveSplit.UI.Components
 
         private void SplitsSettingsControl_OnChange(object sender, SplitsSettingsChangeEventArgs e)
         {
-            HandleSizeChange();
+            // HandleSizeChange();
         }
 
         public SplitsData GetCurrentData()

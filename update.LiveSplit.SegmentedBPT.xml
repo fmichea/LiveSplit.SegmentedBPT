@@ -1,0 +1,10 @@
+<updates>
+    <update version="0.0.1">
+        <files>
+            <file path="builds/v0.0.1/LiveSplit.SegmentedBPT.dll" localPath="Components/LiveSplit.SegmentedBPT.dll" status="changed" />
+        </files>
+        <changelog>
+            <change>BETA!!! Initial Release.</change>
+        </changelog>
+    </update>
+</updates>

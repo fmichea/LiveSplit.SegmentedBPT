@@ -1,4 +1,14 @@
 <updates>
+    <update version="0.0.3">
+        <files>
+            <file path="builds/v0.0.3/LiveSplit.SegmentedBPT.dll" localPath="Components/LiveSplit.SegmentedBPT.dll" status="changed" />
+        </files>
+        <changelog>
+            <change>BETA!!!</change>
+            <change>Fix auto-updater.</change>
+            <change>Fix color picker for text color.</change>
+        </changelog>
+    </update>
     <update version="0.0.2">
         <files>
             <file path="builds/v0.0.2/LiveSplit.SegmentedBPT.dll" localPath="Components/LiveSplit.SegmentedBPT.dll" status="changed" />

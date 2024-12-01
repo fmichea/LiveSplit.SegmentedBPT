@@ -27,6 +27,19 @@ Step 7: Save Layout, you are done, it should now show the BPT to that segment in
 
 ![image](./images/finished_result.png)
 
+# BPT Flashing
+
+In order to display both Segmented BPT and BPT to the end of the run, the layout will flash BPT after each split. There is two modes available,
+default mode and continuous mode. Along with two timers to configure the flashing.
+
+Here is how it works:
+
+- In default mode: Segmented BPT is the default thing displayed by the plugin. When a split happens, the Segmented BPT will keep displaying
+  for its configured time, then BPT to the end of the run will display for its configured time, finally the plugin will go back to displaying
+  the Segmented BPT until the next time a split happens.
+- In continuous mode: Segmented BPT will show for its configured time, then BPT to the end of the run will show for its configured time. This
+  will loop forever. The cycle is reset on every split.
+
 # Known Issues
 
 - The color pickers do not currently work.

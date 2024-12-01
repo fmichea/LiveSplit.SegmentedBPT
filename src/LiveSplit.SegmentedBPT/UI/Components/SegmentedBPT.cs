@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows.Forms;
 using LiveSplit.Model;
 using LiveSplit.Model.Comparisons;
+using LiveSplit.SegmentedBPT;
 using LiveSplit.TimeFormatters;
 
 namespace LiveSplit.UI.Components
@@ -50,12 +51,26 @@ namespace LiveSplit.UI.Components
             // because they provide information based on the loaded splits.
             if (state != CurrentState)
             {
+                if (CurrentState != null)
+                {
+                    CurrentState.OnSplit -= State_OnSplit;
+                    CurrentState.OnStart -= State_OnSplit;
+                }
+
+
                 Settings.CurrentState = state;
                 CurrentState = state;
+
+                if (CurrentState != null)
+                {
+                    CurrentState.OnSplit += State_OnSplit;
+                    CurrentState.OnStart += State_OnSplit;
+                }
             }
 
             if (PreviousRun != state.Run)
             {
+
                 Settings.OnUpdateRun();
                 PreviousRun = state.Run;
             }
@@ -71,6 +86,11 @@ namespace LiveSplit.UI.Components
 
             InternalComponent.NameLabel.ForeColor = Settings.OverrideTextColor ? Settings.TextColor : state.LayoutSettings.TextColor;
             InternalComponent.ValueLabel.ForeColor = Settings.OverrideTimeColor ? Settings.TimeColor : state.LayoutSettings.TextColor;
+        }
+
+        private void State_OnSplit(object sender, EventArgs e)
+        {
+            LastSplitTime = CurrentState.CurrentTime.RealTime;
         }
 
         private void DrawBackground(Graphics g, LiveSplitState state, float width, float height)
@@ -106,12 +126,39 @@ namespace LiveSplit.UI.Components
             InternalComponent.DrawHorizontal(g, state, height, clipRegion);
         }
 
+        private TimeSpan? LastSplitTime = null;
+
         public void Update(IInvalidator invalidator, LiveSplitState state, float width, float height, LayoutMode mode)
         {
             const string comparison = BestSegmentsComparisonGenerator.ComparisonName;
 
-            var splitsData = Settings.GetCurrentData();
-            var selectedSegment = splitsData.GetNextSelectedSegment(state.CurrentSplitIndex);
+            var selectedSegment = new SelectedSegmentData();
+
+            var currentTime = state.CurrentTime.RealTime;
+            var totalCycleLength = Settings.BPTFlashingSegBPTTime + Settings.BPTFlashingBPTTime;
+
+            double sinceLastSplit = -1;
+            if (Settings.BPTFlashingEnabled && currentTime != null && LastSplitTime != null)
+            {
+                sinceLastSplit = currentTime.Value.Subtract(LastSplitTime.Value).TotalSeconds;
+                if (Settings.BPTFlashingContinuous)
+                {
+                    sinceLastSplit %= totalCycleLength;
+                }
+            }
+
+            if (
+                sinceLastSplit == -1 ||
+                (
+                    sinceLastSplit < Settings.BPTFlashingSegBPTTime
+                    || totalCycleLength < sinceLastSplit
+                )
+            )
+            {
+                selectedSegment = Settings.
+                    GetCurrentData().
+                    GetNextSelectedSegment(state.CurrentSplitIndex);
+            }
 
             var isLast = selectedSegment.IsLast();
 

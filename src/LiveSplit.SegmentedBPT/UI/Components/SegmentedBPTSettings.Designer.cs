@@ -83,6 +83,14 @@ namespace LiveSplit.UI.Components
             this.btnShowAll = new System.Windows.Forms.Button();
             this.btnAddForCurrent = new System.Windows.Forms.Button();
             this.tblSplitsSettings = new System.Windows.Forms.TableLayoutPanel();
+            this.groupBoxBPTFlashing = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
+            this.checkBoxFlashEnabled = new System.Windows.Forms.CheckBox();
+            this.checkBoxFlashContinuous = new System.Windows.Forms.CheckBox();
+            this.numericUpDownSegBPTTime = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.numericUpDownBPTTime = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -105,6 +113,10 @@ namespace LiveSplit.UI.Components
             this.groupBoxSplitsSettings.SuspendLayout();
             this.tblSplitsSettingsLayout.SuspendLayout();
             this.tableLayoutPanel13.SuspendLayout();
+            this.groupBoxBPTFlashing.SuspendLayout();
+            this.tableLayoutPanel12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSegBPTTime)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBPTTime)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -436,7 +448,7 @@ namespace LiveSplit.UI.Components
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 159F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.groupBox2, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.groupBox3, 0, 3);
             this.tableLayoutPanel2.Controls.Add(this.cmbGradientType, 3, 0);
@@ -444,17 +456,19 @@ namespace LiveSplit.UI.Components
             this.tableLayoutPanel2.Controls.Add(this.btnColor1, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnColor2, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.chkTwoRows, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.groupBoxSplitsSettings, 0, 4);
+            this.tableLayoutPanel2.Controls.Add(this.groupBoxSplitsSettings, 0, 5);
+            this.tableLayoutPanel2.Controls.Add(this.groupBoxBPTFlashing, 0, 4);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(7, 7);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 5;
+            this.tableLayoutPanel2.RowCount = 6;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 83F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 160F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 52F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(445, 525);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 85F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(445, 577);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // groupBox2
@@ -738,9 +752,9 @@ namespace LiveSplit.UI.Components
             // 
             this.tableLayoutPanel2.SetColumnSpan(this.groupBoxSplitsSettings, 4);
             this.groupBoxSplitsSettings.Controls.Add(this.tblSplitsSettingsLayout);
-            this.groupBoxSplitsSettings.Location = new System.Drawing.Point(3, 304);
+            this.groupBoxSplitsSettings.Location = new System.Drawing.Point(3, 389);
             this.groupBoxSplitsSettings.Name = "groupBoxSplitsSettings";
-            this.groupBoxSplitsSettings.Size = new System.Drawing.Size(439, 218);
+            this.groupBoxSplitsSettings.Size = new System.Drawing.Size(439, 185);
             this.groupBoxSplitsSettings.TabIndex = 32;
             this.groupBoxSplitsSettings.TabStop = false;
             this.groupBoxSplitsSettings.Text = "Splits Configurations";
@@ -806,6 +820,94 @@ namespace LiveSplit.UI.Components
             this.tblSplitsSettings.Size = new System.Drawing.Size(427, 157);
             this.tblSplitsSettings.TabIndex = 1;
             // 
+            // groupBoxBPTFlashing
+            // 
+            this.tableLayoutPanel2.SetColumnSpan(this.groupBoxBPTFlashing, 4);
+            this.groupBoxBPTFlashing.Controls.Add(this.tableLayoutPanel12);
+            this.groupBoxBPTFlashing.Location = new System.Drawing.Point(3, 304);
+            this.groupBoxBPTFlashing.Name = "groupBoxBPTFlashing";
+            this.groupBoxBPTFlashing.Size = new System.Drawing.Size(436, 79);
+            this.groupBoxBPTFlashing.TabIndex = 33;
+            this.groupBoxBPTFlashing.TabStop = false;
+            this.groupBoxBPTFlashing.Text = "BPT Flashing";
+            // 
+            // tableLayoutPanel12
+            // 
+            this.tableLayoutPanel12.ColumnCount = 4;
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel12.Controls.Add(this.checkBoxFlashEnabled, 0, 0);
+            this.tableLayoutPanel12.Controls.Add(this.checkBoxFlashContinuous, 2, 0);
+            this.tableLayoutPanel12.Controls.Add(this.numericUpDownSegBPTTime, 1, 1);
+            this.tableLayoutPanel12.Controls.Add(this.label6, 0, 1);
+            this.tableLayoutPanel12.Controls.Add(this.label7, 2, 1);
+            this.tableLayoutPanel12.Controls.Add(this.numericUpDownBPTTime, 3, 1);
+            this.tableLayoutPanel12.Location = new System.Drawing.Point(6, 19);
+            this.tableLayoutPanel12.Name = "tableLayoutPanel12";
+            this.tableLayoutPanel12.RowCount = 2;
+            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel12.Size = new System.Drawing.Size(427, 54);
+            this.tableLayoutPanel12.TabIndex = 0;
+            // 
+            // checkBoxFlashEnabled
+            // 
+            this.checkBoxFlashEnabled.AutoSize = true;
+            this.checkBoxFlashEnabled.Location = new System.Drawing.Point(3, 3);
+            this.checkBoxFlashEnabled.Name = "checkBoxFlashEnabled";
+            this.checkBoxFlashEnabled.Size = new System.Drawing.Size(65, 17);
+            this.checkBoxFlashEnabled.TabIndex = 0;
+            this.checkBoxFlashEnabled.Text = "Enabled";
+            this.checkBoxFlashEnabled.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxFlashContinuous
+            // 
+            this.checkBoxFlashContinuous.AutoSize = true;
+            this.checkBoxFlashContinuous.Location = new System.Drawing.Point(215, 3);
+            this.checkBoxFlashContinuous.Name = "checkBoxFlashContinuous";
+            this.checkBoxFlashContinuous.Size = new System.Drawing.Size(79, 17);
+            this.checkBoxFlashContinuous.TabIndex = 1;
+            this.checkBoxFlashContinuous.Text = "Continuous";
+            this.checkBoxFlashContinuous.UseVisualStyleBackColor = true;
+            // 
+            // numericUpDownSegBPTTime
+            // 
+            this.numericUpDownSegBPTTime.Location = new System.Drawing.Point(109, 30);
+            this.numericUpDownSegBPTTime.Name = "numericUpDownSegBPTTime";
+            this.numericUpDownSegBPTTime.Size = new System.Drawing.Size(100, 20);
+            this.numericUpDownSegBPTTime.TabIndex = 2;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label6.Location = new System.Drawing.Point(3, 27);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(100, 27);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "Seg. BPT Time (s):";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label7.Location = new System.Drawing.Point(215, 27);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(100, 27);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "BPT Time (s):";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // numericUpDownBPTTime
+            // 
+            this.numericUpDownBPTTime.Location = new System.Drawing.Point(321, 30);
+            this.numericUpDownBPTTime.Name = "numericUpDownBPTTime";
+            this.numericUpDownBPTTime.Size = new System.Drawing.Size(103, 20);
+            this.numericUpDownBPTTime.TabIndex = 5;
+            // 
             // SegmentedBPTSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -814,7 +916,7 @@ namespace LiveSplit.UI.Components
             this.Controls.Add(this.tableLayoutPanel2);
             this.Name = "SegmentedBPTSettings";
             this.Padding = new System.Windows.Forms.Padding(7);
-            this.Size = new System.Drawing.Size(459, 539);
+            this.Size = new System.Drawing.Size(459, 591);
             this.Load += new System.EventHandler(this.SegmentedBPTSettings_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
@@ -839,6 +941,11 @@ namespace LiveSplit.UI.Components
             this.groupBoxSplitsSettings.ResumeLayout(false);
             this.tblSplitsSettingsLayout.ResumeLayout(false);
             this.tableLayoutPanel13.ResumeLayout(false);
+            this.groupBoxBPTFlashing.ResumeLayout(false);
+            this.tableLayoutPanel12.ResumeLayout(false);
+            this.tableLayoutPanel12.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSegBPTTime)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBPTTime)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -904,5 +1011,13 @@ namespace LiveSplit.UI.Components
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tblSplitsSettings;
+        private System.Windows.Forms.GroupBox groupBoxBPTFlashing;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
+        private System.Windows.Forms.CheckBox checkBoxFlashEnabled;
+        private System.Windows.Forms.CheckBox checkBoxFlashContinuous;
+        private System.Windows.Forms.NumericUpDown numericUpDownSegBPTTime;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.NumericUpDown numericUpDownBPTTime;
     }
 }

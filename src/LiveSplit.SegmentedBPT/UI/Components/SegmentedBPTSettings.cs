@@ -48,6 +48,13 @@ namespace LiveSplit.UI.Components
         public Color BackgroundColor { get; set; }
         public Color BackgroundColor2 { get; set; }
         public GradientType BackgroundGradient { get; set; }
+
+        public bool BPTFlashingEnabled { get; set; }
+        public bool BPTFlashingContinuous { get; set; }
+        public int BPTFlashingSegBPTTime { get; set; }
+        public int BPTFlashingBPTTime { get; set; }
+
+
         public string GradientString
         {
             get { return BackgroundGradient.ToString(); }
@@ -87,6 +94,11 @@ namespace LiveSplit.UI.Components
 
             chkOverrideTextColor.CheckedChanged += chkOverrideTextColor_CheckedChanged;
             chkOverrideTimeColor.CheckedChanged += chkOverrideTimeColor_CheckedChanged;
+
+            checkBoxFlashEnabled.DataBindings.Add("Checked", this, "BPTFlashingEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            checkBoxFlashContinuous.DataBindings.Add("Checked", this, "BPTFlashingContinuous", false, DataSourceUpdateMode.OnPropertyChanged);
+            numericUpDownSegBPTTime.DataBindings.Add("Value", this, "BPTFlashingSegBPTTime", false, DataSourceUpdateMode.OnPropertyChanged);
+            numericUpDownBPTTime.DataBindings.Add("Value", this, "BPTFlashingBPTTime", false, DataSourceUpdateMode.OnPropertyChanged);
 
             SplitsSettingsList = new List<SplitsSettings>();
             VisibleSplitsSettingsList = new List<SplitsSettings>();
@@ -177,6 +189,11 @@ namespace LiveSplit.UI.Components
             GradientString = SettingsHelper.ParseString(element["BackgroundGradient"]);
             Display2Rows = SettingsHelper.ParseBool(element["Display2Rows"], false);
 
+            BPTFlashingEnabled = SettingsHelper.ParseBool(element["BPTFlashingEnabled"], true);
+            BPTFlashingContinuous = SettingsHelper.ParseBool(element["BPTFlashingContinuous"], false);
+            BPTFlashingSegBPTTime = SettingsHelper.ParseInt(element["BPTFlashingSegBPTTime"], 2);
+            BPTFlashingBPTTime = SettingsHelper.ParseInt(element["BPTFlashingBPTTime"], 2);
+
             SplitsSettingsList.Clear();
 
             var splitsSettingsListElement = element["SplitsSettings"];
@@ -215,7 +232,11 @@ namespace LiveSplit.UI.Components
                 SettingsHelper.CreateSetting(document, parent, "BackgroundColor", BackgroundColor) ^
                 SettingsHelper.CreateSetting(document, parent, "BackgroundColor2", BackgroundColor2) ^
                 SettingsHelper.CreateSetting(document, parent, "BackgroundGradient", BackgroundGradient) ^
-                SettingsHelper.CreateSetting(document, parent, "Display2Rows", Display2Rows);
+                SettingsHelper.CreateSetting(document, parent, "Display2Rows", Display2Rows) ^
+                SettingsHelper.CreateSetting(document, parent, "BPTFlashingEnabled", BPTFlashingEnabled) ^
+                SettingsHelper.CreateSetting(document, parent, "BPTFlashingContinuous", BPTFlashingContinuous) ^
+                SettingsHelper.CreateSetting(document, parent, "BPTFlashingSegBPTTime", BPTFlashingSegBPTTime) ^
+                SettingsHelper.CreateSetting(document, parent, "BPTFlashingBPTTime", BPTFlashingBPTTime);
 
             XmlElement splitsSettingsNode = null;
             if (document != null)

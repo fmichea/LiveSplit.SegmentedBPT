@@ -34,9 +34,12 @@ namespace LiveSplit.UI.Components
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.txtAlias = new System.Windows.Forms.TextBox();
             this.labelAlias = new System.Windows.Forms.Label();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnRemove = new System.Windows.Forms.Button();
+            this.checkBoxFullAlias = new System.Windows.Forms.CheckBox();
             this.groupBoxMain = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.groupBoxMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,7 +50,7 @@ namespace LiveSplit.UI.Components
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 83.49835F));
             this.tableLayoutPanel1.Controls.Add(this.txtAlias, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.labelAlias, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnRemove, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -77,15 +80,41 @@ namespace LiveSplit.UI.Components
             this.labelAlias.Text = "Alias:";
             this.labelAlias.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.btnRemove, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.checkBoxFullAlias, 0, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(53, 30);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(249, 45);
+            this.tableLayoutPanel2.TabIndex = 5;
+            // 
             // btnRemove
             // 
             this.btnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRemove.Location = new System.Drawing.Point(227, 30);
+            this.btnRemove.Location = new System.Drawing.Point(171, 3);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(75, 23);
             this.btnRemove.TabIndex = 4;
             this.btnRemove.Text = "Remove";
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            // 
+            // checkBoxFullAlias
+            // 
+            this.checkBoxFullAlias.AutoSize = true;
+            this.checkBoxFullAlias.Location = new System.Drawing.Point(3, 3);
+            this.checkBoxFullAlias.Name = "checkBoxFullAlias";
+            this.checkBoxFullAlias.Size = new System.Drawing.Size(67, 17);
+            this.checkBoxFullAlias.TabIndex = 5;
+            this.checkBoxFullAlias.Text = "Full Alias";
+            this.checkBoxFullAlias.UseVisualStyleBackColor = true;
+            this.checkBoxFullAlias.CheckedChanged += new System.EventHandler(this.checkBoxFullAlias_CheckedChanged);
             // 
             // groupBoxMain
             // 
@@ -108,6 +137,8 @@ namespace LiveSplit.UI.Components
             this.Load += new System.EventHandler(this.SelectedSegmentSettings_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.groupBoxMain.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -124,5 +155,8 @@ namespace LiveSplit.UI.Components
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 
         #endregion
+
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.CheckBox checkBoxFullAlias;
     }
 }

@@ -168,12 +168,10 @@ namespace LiveSplit.UI.Components
             if (!isLast)
             {
                 nextSplit = state.Run[selectedSegment.Index - 1];
-                splitName = selectedSegment.Alias != ""
-                    ? selectedSegment.Alias
-                    : state.Run[selectedSegment.Index].Name;
+                splitName = state.Run[selectedSegment.Index].Name;
             }
 
-            var titles = _generateTexts(splitName, isLast);
+            var titles = _generateTexts(splitName, selectedSegment);
 
             InternalComponent.InformationName = InternalComponent.LongestString = titles[0];
             InternalComponent.AlternateNameText = titles.Skip(1).ToArray();
@@ -210,9 +208,9 @@ namespace LiveSplit.UI.Components
             InternalComponent.Update(invalidator, state, width, height, mode);
         }
 
-        protected string[] _generateTexts(string splitName, bool isLast)
+        protected string[] _generateTexts(string splitName, SelectedSegmentData selectedSegment)
         {
-            if (isLast)
+            if (selectedSegment.IsLast())
             {
                 return new[]
                 {
@@ -222,6 +220,19 @@ namespace LiveSplit.UI.Components
                 };
             }
 
+            if (selectedSegment.Alias != "")
+            {
+                if (selectedSegment.FullAlias)
+                    return new[]{ selectedSegment.Alias };
+
+                return _generateTextsFromName(selectedSegment.Alias);
+            }
+
+            return _generateTextsFromName(splitName);
+        }
+
+        protected string[] _generateTextsFromName(string splitName)
+        {
             return new[]
             {
                 $"Best Possible Time to {splitName}",

@@ -49,6 +49,8 @@ namespace LiveSplit.UI.Components
 
             groupBoxMain.Text = title;
             txtAlias.Text = Data.Alias;
+
+            checkBoxFullAlias.Checked = Data.FullAlias;
         }
 
         public void SelectControl()
@@ -71,6 +73,18 @@ namespace LiveSplit.UI.Components
         private void btnRemove_Click(object sender, EventArgs e)
         {
             OnRemove?.Invoke(this, null);
+        }
+
+        private void checkBoxFullAlias_CheckedChanged(object sender, EventArgs e)
+        {
+            var newChecked = checkBoxFullAlias.Checked;
+
+            if (Data.FullAlias == newChecked)
+                return;
+
+            var prevData = Data;
+            Data = new SelectedSegmentData(Data) { FullAlias = newChecked };
+            OnChange?.Invoke(this, new SelectedSegmentSettingsChangeEventArgs(prevData, Data));
         }
     }
 

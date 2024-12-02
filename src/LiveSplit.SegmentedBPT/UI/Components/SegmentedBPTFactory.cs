@@ -22,6 +22,6 @@ namespace LiveSplit.UI.Components
 
         public string XMLURL => UpdateURL + "update.LiveSplit.SegmentedBPT.xml";
 
-        public Version Version => Version.Parse("0.0.3");
+        public Version Version => Version.Parse("0.0.4");
     }
 }

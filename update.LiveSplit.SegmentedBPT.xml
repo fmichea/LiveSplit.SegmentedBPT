@@ -27,4 +27,15 @@
             <change>Fix color picker for text color.</change>
         </changelog>
     </update>
+    <update version="0.0.4">
+        <files>
+            <file path="builds/v0.0.4/LiveSplit.SegmentedBPT.dll" localPath="Components/LiveSplit.SegmentedBPT.dll" status="changed" />
+        </files>
+        <changelog>
+            <change>BETA!!!</change>
+            <change>Fix some of the layout issues with cutoffs.</change>
+            <change>Add a way to control text displayed completely with full aliases.</change>
+            <change>Add options to control flashing of BPT to end of run for few seconds after split or continously.</change>
+        </changelog>
+    </update>
 </updates>

@@ -356,6 +356,7 @@ namespace LiveSplit.UI.Components
             Utils.IncreaseHeight(tblSplitsSettingsLayout.RowStyles[1], heightOffset);
             Utils.IncreaseHeight(tblSplitsSettingsLayout, heightOffset);
             Utils.IncreaseHeight(groupBoxSplitsSettings, heightOffset);
+            Utils.IncreaseHeight(tableLayoutPanel2.RowStyles[tableLayoutPanel2.RowStyles.Count - 1], heightOffset);
             Utils.IncreaseHeight(tableLayoutPanel2, heightOffset);
             Utils.IncreaseHeight(this, heightOffset);
         }
@@ -419,6 +420,7 @@ namespace LiveSplit.UI.Components
             Utils.IncreaseHeight(tblSplitsSettingsLayout.RowStyles[1], height);
 
             Utils.IncreaseHeight(groupBoxSplitsSettings, height);
+            Utils.IncreaseHeight(tableLayoutPanel2.RowStyles[tableLayoutPanel2.RowStyles.Count - 1], height);
             Utils.IncreaseHeight(tableLayoutPanel2, height);
             Utils.IncreaseHeight(this, height);
 
@@ -442,6 +444,7 @@ namespace LiveSplit.UI.Components
             Utils.DecreaseHeight(tblSplitsSettingsLayout, height);
             Utils.ResetHeight(tblSplitsSettingsLayout.RowStyles[1]);
             Utils.DecreaseHeight(groupBoxSplitsSettings, height);
+            Utils.DecreaseHeight(tableLayoutPanel2.RowStyles[tableLayoutPanel2.RowStyles.Count - 1], height);
             Utils.DecreaseHeight(tableLayoutPanel2, height);
             Utils.DecreaseHeight(this, height);
         }

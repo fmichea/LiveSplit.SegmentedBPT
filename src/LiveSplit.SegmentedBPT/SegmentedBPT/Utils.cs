@@ -60,7 +60,9 @@ namespace LiveSplit.SegmentedBPT
             if (style == null)
                 return 0;
 
-            style.Height += height;
+            var newHeight = style.Height + height;
+            if (newHeight < 0 ) newHeight = 0;
+            style.Height = newHeight;
             return (int) style.Height;
         }
 
@@ -69,7 +71,9 @@ namespace LiveSplit.SegmentedBPT
             if (control == null)
                 return 0;
 
-            control.Height += height;
+            var newHeight = control.Height + height;
+            if (newHeight < 0) newHeight = 0;
+            control.Height = newHeight;
             return control.Height;
         }
 

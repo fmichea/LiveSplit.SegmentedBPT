@@ -817,7 +817,7 @@ namespace LiveSplit.UI.Components
             this.tblSplitsSettings.Name = "tblSplitsSettings";
             this.tblSplitsSettings.RowCount = 1;
             this.tblSplitsSettings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 157F));
-            this.tblSplitsSettings.Size = new System.Drawing.Size(427, 157);
+            this.tblSplitsSettings.Size = new System.Drawing.Size(427, 127);
             this.tblSplitsSettings.TabIndex = 1;
             // 
             // groupBoxBPTFlashing

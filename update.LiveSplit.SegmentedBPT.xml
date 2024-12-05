@@ -38,13 +38,22 @@
             <change>Add options to control flashing of BPT to end of run for few seconds after split or continously.</change>
         </changelog>
     </update>
-        <update version="0.0.5">
+    <update version="0.0.5">
         <files>
             <file path="builds/v0.0.5/LiveSplit.SegmentedBPT.dll" localPath="Components/LiveSplit.SegmentedBPT.dll" status="changed" />
         </files>
         <changelog>
             <change>BETA!!!</change>
             <change>Add a third BPT flashing mode, simplify configuration UI.</change>
+        </changelog>
+    </update>
+    <update version="0.0.6">
+        <files>
+            <file path="builds/v0.0.6/LiveSplit.SegmentedBPT.dll" localPath="Components/LiveSplit.SegmentedBPT.dll" status="changed" />
+        </files>
+        <changelog>
+            <change>BETA!!!</change>
+            <change>Fix bug with BPT default flashing.</change>
         </changelog>
     </update>
 </updates>

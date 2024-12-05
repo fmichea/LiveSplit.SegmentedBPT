@@ -141,20 +141,25 @@ namespace LiveSplit.UI.Components
             if (Settings.BPTFlashingEnabled && currentTime != null && LastSplitTime != null)
             {
                 sinceLastSplit = currentTime.Value.Subtract(LastSplitTime.Value).TotalSeconds;
-                if (Settings.BPTFlashingContinuous)
+                if (Settings.BPTFlashingMode == BPTFlashingModeEnum.ContinuousFlashing)
                 {
                     sinceLastSplit %= totalCycleLength;
                 }
             }
 
-            if (
+
+            bool shouldShowDefault = (
                 sinceLastSplit == -1 ||
                 (
                     sinceLastSplit < Settings.BPTFlashingSegBPTTime
                     || totalCycleLength < sinceLastSplit
                 )
-            )
-            {
+            );
+
+            if (
+                (shouldShowDefault && Settings.BPTFlashingMode != BPTFlashingModeEnum.DefaultBPT) ||
+                (!shouldShowDefault && Settings.BPTFlashingMode == BPTFlashingModeEnum.DefaultBPT)
+            ) {
                 selectedSegment = Settings.
                     GetCurrentData().
                     GetNextSelectedSegment(state.CurrentSplitIndex);

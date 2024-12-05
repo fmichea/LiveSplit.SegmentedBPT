@@ -86,11 +86,11 @@ namespace LiveSplit.UI.Components
             this.groupBoxBPTFlashing = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
             this.checkBoxFlashEnabled = new System.Windows.Forms.CheckBox();
-            this.checkBoxFlashContinuous = new System.Windows.Forms.CheckBox();
             this.numericUpDownSegBPTTime = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.numericUpDownBPTTime = new System.Windows.Forms.NumericUpDown();
+            this.cmbFlashingMode = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -839,11 +839,11 @@ namespace LiveSplit.UI.Components
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel12.Controls.Add(this.checkBoxFlashEnabled, 0, 0);
-            this.tableLayoutPanel12.Controls.Add(this.checkBoxFlashContinuous, 2, 0);
             this.tableLayoutPanel12.Controls.Add(this.numericUpDownSegBPTTime, 1, 1);
             this.tableLayoutPanel12.Controls.Add(this.label6, 0, 1);
             this.tableLayoutPanel12.Controls.Add(this.label7, 2, 1);
             this.tableLayoutPanel12.Controls.Add(this.numericUpDownBPTTime, 3, 1);
+            this.tableLayoutPanel12.Controls.Add(this.cmbFlashingMode, 1, 0);
             this.tableLayoutPanel12.Location = new System.Drawing.Point(6, 19);
             this.tableLayoutPanel12.Name = "tableLayoutPanel12";
             this.tableLayoutPanel12.RowCount = 2;
@@ -861,16 +861,6 @@ namespace LiveSplit.UI.Components
             this.checkBoxFlashEnabled.TabIndex = 0;
             this.checkBoxFlashEnabled.Text = "Enabled";
             this.checkBoxFlashEnabled.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxFlashContinuous
-            // 
-            this.checkBoxFlashContinuous.AutoSize = true;
-            this.checkBoxFlashContinuous.Location = new System.Drawing.Point(215, 3);
-            this.checkBoxFlashContinuous.Name = "checkBoxFlashContinuous";
-            this.checkBoxFlashContinuous.Size = new System.Drawing.Size(79, 17);
-            this.checkBoxFlashContinuous.TabIndex = 1;
-            this.checkBoxFlashContinuous.Text = "Continuous";
-            this.checkBoxFlashContinuous.UseVisualStyleBackColor = true;
             // 
             // numericUpDownSegBPTTime
             // 
@@ -907,6 +897,16 @@ namespace LiveSplit.UI.Components
             this.numericUpDownBPTTime.Name = "numericUpDownBPTTime";
             this.numericUpDownBPTTime.Size = new System.Drawing.Size(103, 20);
             this.numericUpDownBPTTime.TabIndex = 5;
+            // 
+            // cmbFlashingMode
+            // 
+            this.tableLayoutPanel12.SetColumnSpan(this.cmbFlashingMode, 3);
+            this.cmbFlashingMode.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbFlashingMode.FormattingEnabled = true;
+            this.cmbFlashingMode.Location = new System.Drawing.Point(109, 3);
+            this.cmbFlashingMode.Name = "cmbFlashingMode";
+            this.cmbFlashingMode.Size = new System.Drawing.Size(315, 21);
+            this.cmbFlashingMode.TabIndex = 6;
             // 
             // SegmentedBPTSettings
             // 
@@ -1014,10 +1014,10 @@ namespace LiveSplit.UI.Components
         private System.Windows.Forms.GroupBox groupBoxBPTFlashing;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
         private System.Windows.Forms.CheckBox checkBoxFlashEnabled;
-        private System.Windows.Forms.CheckBox checkBoxFlashContinuous;
         private System.Windows.Forms.NumericUpDown numericUpDownSegBPTTime;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.NumericUpDown numericUpDownBPTTime;
+        private System.Windows.Forms.ComboBox cmbFlashingMode;
     }
 }

@@ -13,6 +13,13 @@ using LiveSplit.TimeFormatters;
 
 namespace LiveSplit.UI.Components
 {
+    public enum BPTFlashingModeEnum : int
+    {
+        DefaultSegBPT = 0,
+        DefaultBPT = 1,
+        ContinuousFlashing = 2,
+    }
+
     public partial class SegmentedBPTSettings : UserControl
     {
         public LiveSplitState CurrentState
@@ -50,7 +57,7 @@ namespace LiveSplit.UI.Components
         public GradientType BackgroundGradient { get; set; }
 
         public bool BPTFlashingEnabled { get; set; }
-        public bool BPTFlashingContinuous { get; set; }
+        public BPTFlashingModeEnum BPTFlashingMode { get; set; }
         public int BPTFlashingSegBPTTime { get; set; }
         public int BPTFlashingBPTTime { get; set; }
 
@@ -96,7 +103,16 @@ namespace LiveSplit.UI.Components
             chkOverrideTimeColor.CheckedChanged += chkOverrideTimeColor_CheckedChanged;
 
             checkBoxFlashEnabled.DataBindings.Add("Checked", this, "BPTFlashingEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
-            checkBoxFlashContinuous.DataBindings.Add("Checked", this, "BPTFlashingContinuous", false, DataSourceUpdateMode.OnPropertyChanged);
+
+            cmbFlashingMode.Items.AddRange(new object[] {
+                "Default to Segmented BPT, flash BPT on split",
+                "Default to BPT, flash Segmented BPT on split",
+                "Continuous flashing of Segmented BPT and BPT",
+            });
+            cmbFlashingMode.SelectedIndex = (int)BPTFlashingMode;
+            cmbFlashingMode.SelectedIndexChanged += CmbFlashingMode_SelectedIndexChanged;
+
+            //checkBoxFlashContinuous.DataBindings.Add("Checked", this, "BPTFlashingContinuous", false, DataSourceUpdateMode.OnPropertyChanged);
             numericUpDownSegBPTTime.DataBindings.Add("Value", this, "BPTFlashingSegBPTTime", false, DataSourceUpdateMode.OnPropertyChanged);
             numericUpDownBPTTime.DataBindings.Add("Value", this, "BPTFlashingBPTTime", false, DataSourceUpdateMode.OnPropertyChanged);
 
@@ -106,6 +122,11 @@ namespace LiveSplit.UI.Components
             ShowingAll = false;
 
             //OnCurrentStateChange += SegmentedBPTSettings_OnCurrentStateChange;
+        }
+
+        private void CmbFlashingMode_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            BPTFlashingMode = (BPTFlashingModeEnum) cmbFlashingMode.SelectedIndex;
         }
 
         public void OnUpdateRun()
@@ -190,9 +211,18 @@ namespace LiveSplit.UI.Components
             Display2Rows = SettingsHelper.ParseBool(element["Display2Rows"], false);
 
             BPTFlashingEnabled = SettingsHelper.ParseBool(element["BPTFlashingEnabled"], true);
-            BPTFlashingContinuous = SettingsHelper.ParseBool(element["BPTFlashingContinuous"], false);
+            BPTFlashingMode = (BPTFlashingModeEnum)SettingsHelper.ParseInt(element["BPTFlashingMode"], 0);
             BPTFlashingSegBPTTime = SettingsHelper.ParseInt(element["BPTFlashingSegBPTTime"], 2);
             BPTFlashingBPTTime = SettingsHelper.ParseInt(element["BPTFlashingBPTTime"], 2);
+
+            // TODO: Remove at some point, behavior changed on 2024-12-05.
+            bool continuousBefore = SettingsHelper.ParseBool(element["BPTFlashingContinuous"], false);
+            if (continuousBefore)
+            {
+                BPTFlashingMode = BPTFlashingModeEnum.ContinuousFlashing;
+            }
+
+            cmbFlashingMode.SelectedIndex = (int) BPTFlashingMode;
 
             SplitsSettingsList.Clear();
 
@@ -234,7 +264,7 @@ namespace LiveSplit.UI.Components
                 SettingsHelper.CreateSetting(document, parent, "BackgroundGradient", BackgroundGradient) ^
                 SettingsHelper.CreateSetting(document, parent, "Display2Rows", Display2Rows) ^
                 SettingsHelper.CreateSetting(document, parent, "BPTFlashingEnabled", BPTFlashingEnabled) ^
-                SettingsHelper.CreateSetting(document, parent, "BPTFlashingContinuous", BPTFlashingContinuous) ^
+                SettingsHelper.CreateSetting(document, parent, "BPTFlashingMode", (int) BPTFlashingMode) ^
                 SettingsHelper.CreateSetting(document, parent, "BPTFlashingSegBPTTime", BPTFlashingSegBPTTime) ^
                 SettingsHelper.CreateSetting(document, parent, "BPTFlashingBPTTime", BPTFlashingBPTTime);
 

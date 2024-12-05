@@ -138,8 +138,12 @@ namespace LiveSplit.UI.Components
             var totalCycleLength = Settings.BPTFlashingSegBPTTime + Settings.BPTFlashingBPTTime;
 
             double sinceLastSplit = -1;
-            if (Settings.BPTFlashingEnabled && currentTime != null && LastSplitTime != null)
-            {
+            if (
+                state.CurrentPhase == TimerPhase.Running &&
+                Settings.BPTFlashingEnabled &&
+                currentTime != null &&
+                LastSplitTime != null
+            ) {
                 sinceLastSplit = currentTime.Value.Subtract(LastSplitTime.Value).TotalSeconds;
                 if (Settings.BPTFlashingMode == BPTFlashingModeEnum.ContinuousFlashing)
                 {
@@ -147,11 +151,16 @@ namespace LiveSplit.UI.Components
                 }
             }
 
+            var firstPhaseDuration = Settings.BPTFlashingSegBPTTime;
+            if (Settings.BPTFlashingMode == BPTFlashingModeEnum.DefaultBPT)
+            {
+                firstPhaseDuration = Settings.BPTFlashingBPTTime;
+            }
 
             bool shouldShowDefault = (
                 sinceLastSplit == -1 ||
                 (
-                    sinceLastSplit < Settings.BPTFlashingSegBPTTime
+                    sinceLastSplit < firstPhaseDuration
                     || totalCycleLength < sinceLastSplit
                 )
             );
